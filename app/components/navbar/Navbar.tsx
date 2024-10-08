@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import SeacrhFilters from "@/app/components/SeacrhFilters";
+import SeacrhFilters from "@/app/components/navbar/SeacrhFilters";
+import UserNav from "@/app/components/navbar/UserNav";
+import AddPropertyButton from "@/app/components/navbar/AddPropertyButton";
 
 const Navbar = () => {
     return (
@@ -18,7 +20,8 @@ const Navbar = () => {
                         <SeacrhFilters/>
                     </div>
                     <div className="flex items-center space-x-6">
-                        Add property - Users nav
+                        <AddPropertyButton/>
+                        <UserNav/>
                     </div>
                 </div>
             </div>
