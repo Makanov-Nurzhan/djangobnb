@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/app/components/navbar/Navbar";
+import LoginModal from "@/app/components/modals/LoginModal";
+import SignupModal from "@/app/components/modals/SignupModal";
 
 
 const geistSans = localFont({
@@ -25,6 +27,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const content= (<p>Content</p>)
+
   return (
     <html lang="en">
       <body
@@ -34,7 +38,8 @@ export default function RootLayout({
         <div className="pt-32">
            {children}
         </div>
-
+      <LoginModal/>
+      <SignupModal/>
       </body>
     </html>
   );
