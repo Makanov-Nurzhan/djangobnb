@@ -3,9 +3,14 @@ import {useState} from "react";
 import MenuList from "@/app/components/navbar/MenuList";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import useSignupModal from "@/app/hooks/useSignupModal";
+import LogoutButton from "@/app/components/LogoutButton";
 
 
-const UserNav = () => {
+interface UserNavProps {
+    userId?: string | null;
+}
+
+const UserNav: React.FC<UserNavProps> = ({userId}) => {
     const loginModal = useLoginModal();
     const signupModal = useSignupModal();
 
@@ -30,20 +35,30 @@ const UserNav = () => {
 
             {isOpen && (
                 <div className="w-[220px] absolute top-[60px] right-0 bg-white border rounded-xl shadow-md flex flex-col cursor-pointer">
-                    <MenuList
-                        onClick={() => {
-                            setIsOpen(false)
-                            loginModal.open()
-                        }}
-                        label='Log in'
-                    />
-                    <MenuList
-                        onClick={() => {
-                            setIsOpen(false)
-                            signupModal.open()
-                        }}
-                        label='Sign up'
-                    />
+                    {
+                        userId ? (
+                            <LogoutButton
+
+                            />
+                        ) : (
+                            <>
+                                <MenuList
+                                    onClick={() => {
+                                        setIsOpen(false)
+                                        loginModal.open()
+                                    }}
+                                    label='Log in'
+                                />
+                                <MenuList
+                                    onClick={() => {
+                                        setIsOpen(false)
+                                        signupModal.open()
+                                    }}
+                                    label='Sign up'
+                                />
+                            </>
+                        )
+                    }
                 </div>
             )}
         </div>

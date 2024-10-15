@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/app/components/navbar/Navbar";
 import LoginModal from "@/app/components/modals/LoginModal";
 import SignupModal from "@/app/components/modals/SignupModal";
+import AddPropertyModal from "@/app/components/modals/AddPropertyModal";
 
 
 const geistSans = localFont({
@@ -40,6 +41,7 @@ export default function RootLayout({
         </div>
       <LoginModal/>
       <SignupModal/>
+      <AddPropertyModal/>
       </body>
     </html>
   );
