@@ -11,6 +11,7 @@ import apiServices from "@/app/services/apiServices";
 import {useRouter} from "next/navigation";
 
 const AddPropertyModal = () => {
+    const [errors, setErrors] = useState<string[]>([]);
     const [currentStep, setCurrentStep] = useState(1);
     const [dataCategory, setDataCategory] = useState("")
     const addPropertyModal = useAddPropertyModal();
@@ -61,7 +62,7 @@ const AddPropertyModal = () => {
             formData.append('country_code', dataCountry.value);
             formData.append('image', dataImage);
 
-            const response = await apiServices.post('/api/properties/create', formData)
+            const response = await apiServices.post('/api/properties/create/', formData)
 
             if (response.success) {
                 console.log("SUCCESS :-D");
@@ -71,6 +72,12 @@ const AddPropertyModal = () => {
                 addPropertyModal.close()
             } else {
                 console.log("ERROR :-D");
+
+                const tmpErrors: string[] = Object.values(response).map((error: any) => {
+                    return error
+                })
+
+                setErrors(tmpErrors)
             }
         }
     }
@@ -236,7 +243,16 @@ const AddPropertyModal = () => {
                                     </div>
                                 )}
                             </div>
-
+                            {errors.map((error, index) => {
+                                return (
+                                    <div
+                                        key={index}
+                                        className="p-5 mb-4 bg-airbnb text-white rounded-xl opacity-80"
+                                    >
+                                        {error}
+                                    </div>
+                                )
+                            })}
                             <CustomButton
                                 label="Previous"
                                 className="mb-2 bg-black hover:bg-gray-800"
@@ -244,7 +260,7 @@ const AddPropertyModal = () => {
                             />
                             <CustomButton
                                 label="Submit"
-                                onClick={() => console.log('Submit')}
+                                onClick={submitForm}
                             />
 
                         </>

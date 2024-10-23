@@ -79,15 +79,15 @@ export async function getUserId() {
     return userId ? userId : null
 }
 
-// export async function getAccessToken() {
-//     let accessToken = cookies().get('session_access_token')?.value;
-//
-//     if (!accessToken) {
-//         accessToken = await handleRefresh();
-//     }
-//
-//     return accessToken;
-// }
+export async function getAccessToken() {
+    let accessToken = cookies().get('session_access_token')?.value;
+
+    // if (!accessToken) {
+    //     accessToken = await handleRefresh();
+    // }
+
+    return accessToken;
+}
 
 export async function getRefreshToken() {
     return cookies().get('session_refresh_token')?.value;
