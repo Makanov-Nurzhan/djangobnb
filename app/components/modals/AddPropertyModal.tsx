@@ -7,7 +7,7 @@ import {ChangeEvent, useState} from "react";
 import Categories from "@/app/components/addproperty/Categories";
 import SelectCountry, {SelectCountryValue} from "@/app/components/forms/SelectCountry";
 import Image from "next/image";
-import apiServices from "@/app/services/apiServices";
+import apiService from "@/app/services/apiService";
 import {useRouter} from "next/navigation";
 
 const AddPropertyModal = () => {
@@ -62,7 +62,7 @@ const AddPropertyModal = () => {
             formData.append('country_code', dataCountry.value);
             formData.append('image', dataImage);
 
-            const response = await apiServices.post('/api/properties/create/', formData)
+            const response = await apiService.post('/api/properties/create/', formData)
 
             if (response.success) {
                 console.log("SUCCESS :-D");

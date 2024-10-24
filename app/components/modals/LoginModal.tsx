@@ -5,7 +5,7 @@ import {useState} from "react";
 import {useRouter} from "next/navigation";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import CustomButton from "@/app/components/forms/CustomButton";
-import apiServices from "@/app/services/apiServices";
+import apiService from "@/app/services/apiService";
 import {handlerLogin} from "@/app/lib/actions";
 
 
@@ -24,7 +24,7 @@ const LoginModal = () => {
             password: password
         }
 
-        const response = await apiServices.post('/api/auth/login/', JSON.stringify(formData))
+        const response = await apiService.postWithoutToken('/api/auth/login/', JSON.stringify(formData))
          if (response.access) {
 
             handlerLogin(response.user.pk, response.access, response.refresh)
