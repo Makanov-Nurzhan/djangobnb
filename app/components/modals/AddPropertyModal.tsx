@@ -11,10 +11,10 @@ import apiService from "@/app/services/apiService";
 import {useRouter} from "next/navigation";
 
 const AddPropertyModal = () => {
+    const addPropertyModal = useAddPropertyModal();
     const [errors, setErrors] = useState<string[]>([]);
     const [currentStep, setCurrentStep] = useState(1);
     const [dataCategory, setDataCategory] = useState("")
-    const addPropertyModal = useAddPropertyModal();
     const [dataTitle, setDataTitle] = useState("");
     const [dataDescription, setDataDescription] = useState("");
     const [dataPrice, setDataPrice] = useState("");
