@@ -1,13 +1,16 @@
 import Image from "next/image";
 import {PropertyType} from "@/app/components/properties/PropertyList";
 import {useRouter} from "next/navigation";
+import FavoriteButton from "@/app/components/FavoriteButton";
+import {is} from "date-fns/locale";
 
 interface PropertyProps {
     property: PropertyType;
+    markFavorite?: (is_favorite: boolean) => void;
 }
 
 
-const PropertyListItem: React.FC<PropertyProps> = ({property}) => {
+const PropertyListItem: React.FC<PropertyProps> = ({property, markFavorite}) => {
 
     const router = useRouter();
 
@@ -24,6 +27,14 @@ const PropertyListItem: React.FC<PropertyProps> = ({property}) => {
                     sizes="(max-width: 768px) 768px, (max-width: 1200px) 768px, 768px"
                     className="hover:scale-110 object-cover transition h-full"
                     />
+                {markFavorite && (
+                    <FavoriteButton
+                        id={property.id}
+                        is_favorite={property.is_favorite}
+                        markFavorite={(is_favorite) => markFavorite(is_favorite)}
+                    />
+                )}
+
             </div>
 
             <div className="mt-2">
