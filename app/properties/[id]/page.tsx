@@ -35,7 +35,7 @@ const PropertyDetailPage = async ({params}: {params: {id: string}}) => {
                         {
                             property.landlord.avatar_url && (
                                 <Image
-                                    src={property.lamdlord.avatar_url}
+                                    src={property.landlord.avatar_url}
                                     alt=""
                                     width={50}
                                     height={50}

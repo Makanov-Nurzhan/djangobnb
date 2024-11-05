@@ -40,6 +40,14 @@ const UserNav: React.FC<UserNavProps> = ({userId}) => {
                         userId ? (
                             <>
                                 <MenuList
+                                    label="Inbox"
+                                    onClick={() => {
+                                        setIsOpen(false)
+                                        router.push('/inbox')
+                                    }}
+                                />
+
+                                <MenuList
                                     label="My properties"
                                     onClick={() => {
                                         setIsOpen(false)

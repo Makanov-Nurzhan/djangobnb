@@ -3,7 +3,6 @@
 import apiService from "@/app/services/apiService";
 import React, {useEffect, useState} from "react";
 import PropertyListItem from "@/app/components/properties/PropertyListItem";
-import {is, tr} from "date-fns/locale";
 export type PropertyType = {
     id:string;
     title: string;
