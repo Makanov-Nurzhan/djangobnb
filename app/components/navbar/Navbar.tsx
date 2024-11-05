@@ -18,7 +18,9 @@ const Navbar = async () => {
                             alt="logo"
                             src="/logo.png"
                             width={180}
-                            height={38} />
+                            height={38}
+                            priority
+                        />
                     </Link>
                     <div className="flex space-x-6">
                         <SeacrhFilters/>
